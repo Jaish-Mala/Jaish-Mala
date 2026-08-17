@@ -100,3 +100,23 @@ window.addEventListener("scroll", () => {
     });
 
 });
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    fetch("https://script.google.com/macros/s/AKfycbxWqmamKqsKetxKOoYgRFYV_jtNkuwev5JPCiK8kEXiqt3dCM4cfMfwFKaFkR-a5P8t/exec", {
+        method: "POST",
+        body: new URLSearchParams(formData),
+        mode: "no-cors"
+    });
+
+    alert("Thank you! Your message has been sent successfully.");
+
+    contactForm.reset();
+
+});
