@@ -109,7 +109,7 @@ contactForm.addEventListener("submit", function(e) {
 
     const formData = new FormData(contactForm);
 
-    fetch("https://script.google.com/macros/s/AKfycbxWqmamKqsKetxKOoYgRFYV_jtNkuwev5JPCiK8kEXiqt3dCM4cfMfwFKaFkR-a5P8t/exec", {
+    fetch("https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSTaOcHmpisjOU3v31sbbMHRLASCx52eBlyS4725g5wdVzIH-oLgAQiE1NyCh3doj3vBTR_Znm6XhVgL5IDmkoZFGWuy6aVgRmUftwllf-KDo9sM-nKrTyNTAdUDP4LdvghXdIvn_pgNpnDKhupZLqHhAY4QGH5RRa_cLYBaGvFOxX43FDDdOxKN3m1nyiOsZcjf5XqxG3OIJ7_a3fE29QW5XMpjekZsnPVv3vzEdN0aH46RA5So9gclg9eCEZmtiv9Zahp-1kbUFink5-aPyg9Kl6SuQ&lib=M9ZLfrI4kUd-taUsDZEApL0tJZtfL3MXQ", {
         method: "POST",
         body: new URLSearchParams(formData),
         mode: "no-cors"
