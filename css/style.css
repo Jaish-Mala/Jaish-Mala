@@ -125,7 +125,7 @@ nav ul li a.active::after {
         border-bottom-left-radius: 120px;
         border-bottom-right-radius: 120px;
     transition: 0.3s;
-
+padding-right: 100px;
     
 }
 .hero-image:hover {
