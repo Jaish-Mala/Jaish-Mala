@@ -96,6 +96,7 @@ nav ul li a.active::after {
 }
 .hero-left h2{
     color: white;
+    
     font-size: 40px;
     margin: 0 0 12px;}
 .hero-left h3{
@@ -109,7 +110,7 @@ nav ul li a.active::after {
     font-size: 20px;
     padding-bottom: 20px;
     text-align: center;
-    
+
 }
 .hero-right{
     flex: 1;
