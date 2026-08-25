@@ -107,8 +107,8 @@ nav ul li a.active::after {
 }
 .hero-left p{
     font-size: 20px;
-    padding-left: 60px;
     padding-bottom: 20px;
+    text-align: center;
 }
 .hero-right{
     flex: 1;
