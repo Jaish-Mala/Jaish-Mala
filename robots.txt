@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jaish-mala.github.io/Jaish-Mala/sitemap.xml
