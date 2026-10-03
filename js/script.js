@@ -126,3 +126,134 @@ if (contactForm) {
 
     });
 }
+
+/* =========================
+   PROJECT SLIDER
+========================= */
+
+const projectContainer = document.querySelector(".project-container");
+const projectCards = document.querySelectorAll(".project-card");
+const projectDots = document.querySelectorAll(".project-dot");
+
+let currentProject = 0;
+
+if (projectContainer && projectCards.length > 0) {
+
+    /* Create slider track automatically */
+    const projectTrack = document.createElement("div");
+    projectTrack.className = "project-track";
+
+    projectCards.forEach(card => {
+        projectTrack.appendChild(card);
+    });
+
+    projectContainer.appendChild(projectTrack);
+
+
+    function updateProjectSlider() {
+
+        const isMobile = window.innerWidth <= 768;
+
+        const cardsToShow = isMobile ? 1 : 3;
+
+        const cardWidth = projectCards[0].offsetWidth;
+
+        const gap = isMobile ? 0 : 30;
+
+        const maxPosition =
+            Math.max(0, projectCards.length - cardsToShow);
+
+        if (currentProject > maxPosition) {
+            currentProject = maxPosition;
+        }
+
+        const moveAmount = cardWidth + gap;
+
+        projectTrack.style.transform =
+            `translateX(-${currentProject * moveAmount}px)`;
+
+
+        /* Update dots */
+
+        projectDots.forEach(dot => {
+            dot.classList.remove("active");
+        });
+
+        if (projectDots.length > 0) {
+
+            if (currentProject === 0) {
+                projectDots[0].classList.add("active");
+            } else if (projectDots.length > 1) {
+                projectDots[1].classList.add("active");
+            }
+
+        }
+    }
+
+
+    /* =========================
+       NEXT / PREVIOUS
+    ========================= */
+
+    window.moveProjects = function(direction) {
+
+        const isMobile = window.innerWidth <= 768;
+
+        const cardsToShow = isMobile ? 1 : 3;
+
+        const maxPosition =
+            Math.max(0, projectCards.length - cardsToShow);
+
+        currentProject += direction;
+
+        /* Go back to first */
+        if (currentProject > maxPosition) {
+            currentProject = 0;
+        }
+
+        /* Go to last */
+        if (currentProject < 0) {
+            currentProject = maxPosition;
+        }
+
+        updateProjectSlider();
+    };
+
+
+    /* =========================
+       DOT CLICK
+    ========================= */
+
+    projectDots.forEach((dot, index) => {
+
+        dot.addEventListener("click", function() {
+
+            if (index === 0) {
+                currentProject = 0;
+            }
+
+            if (index === 1) {
+                currentProject =
+                    Math.max(0, projectCards.length - 3);
+            }
+
+            updateProjectSlider();
+
+        });
+
+    });
+
+
+    /* =========================
+       RESIZE
+    ========================= */
+
+    window.addEventListener("resize", function() {
+        currentProject = 0;
+        updateProjectSlider();
+    });
+
+
+    /* Initial */
+    updateProjectSlider();
+}

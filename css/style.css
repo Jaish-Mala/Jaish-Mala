@@ -868,59 +868,6 @@ footer p {
 
 
 /* =========================
-   PROJECT REVEAL
-========================= */
-
-.project-card {
-    opacity: 0;
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-}
-
-/* First card - left */
-.project-card:nth-child(1) {
-    transform: translateX(-100px);
-}
-
-/* Second card - bottom */
-.project-card:nth-child(2) {
-    transform: translateY(100px);
-}
-
-/* Third card - right */
-.project-card:nth-child(3) {
-    transform: translateX(100px);
-}
-
-
-/* When visible */
-
-.project-card.show {
-    opacity: 1;
-    transform: translate(0);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    border-color: #E0AD2E;
-    box-shadow: 0 0 20px rgba(255, 255, 0, 0.2);
-}
-
-.project-card:nth-child(1) {
-    transition-delay: 0s;
-}
-
-.project-card:nth-child(2) {
-    transition-delay: 0.15s;
-}
-
-.project-card:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-
-/* =========================
    CONTACT REVEAL
 ========================= */
 
@@ -940,4 +887,623 @@ footer p {
 .contact-form.show {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* =========================
+   PROJECT SLIDER
+========================= */
+
+.project-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 55px;
+    box-sizing: border-box;
+}
+
+.project-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.6s ease;
+    width: max-content;
+}
+
+/* Project Ca
+
+/* =========================
+   FINAL PROJECT SLIDER
+========================= */
+
+.projects {
+    min-height: 100vh;
+    padding: 100px 120px;
+    overflow: visible;
+}
+
+.projects > h2 {
+    color: #E0AD2E;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Main slider area */
+.project-slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 55px;
+    box-sizing: border-box;
+}
+
+/* Visible window */
+.project-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+/* Moving row */
+.project-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+/* Exactly 3 cards fit inside the available desktop area */
+.project-track .project-card {
+    flex: 0 0 calc((100% - 60px) / 3);
+    width: calc((100% - 60px) / 3);
+    max-width: 350px;
+    min-width: 0;
+
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    opacity: 1;
+    transform: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Keep hover separate from slider transform */
+.project-track .project-card:hover {
+    transform: translateY(-10px);
+    border-color: #E0AD2E;
+    box-shadow: 0 0 20px rgba(224, 173, 46, 0.2);
+}
+
+.project-track .project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #000;
+    display: block;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content h3 {
+    color: #E0AD2E;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.project-content .tech {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.project-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #E0AD2E;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.project-btn:hover {
+    background-color: white;
+    box-shadow: 0 0 15px #E0AD2E;
+}
+
+/* =========================
+   ARROWS
+========================= */
+
+.project-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid #E0AD2E;
+    border-radius: 50%;
+
+    background-color: #111;
+    color: #E0AD2E;
+
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+
+    transition: 0.3s ease;
+}
+
+.project-arrow:hover {
+    background-color: #E0AD2E;
+    color: black;
+    box-shadow: 0 0 15px #E0AD2E;
+}
+
+/* Outside the cards */
+.project-prev {
+    left: 0;
+}
+
+.project-next {
+    right: 0;
+}
+
+/* =========================
+   DOTS
+========================= */
+
+.project-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.project-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.project-dot.active {
+    background-color: #E0AD2E;
+    box-shadow: 0 0 8px #E0AD2E;
+}
+
+/* Garden Valley */
+.garden-valley-logo {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-bottom: 1px solid #333;
+    font-size: 55px;
+    font-weight: bold;
+    color: #E0AD2E;
+}
+
+
+/* =========================
+   MOBILE PROJECT SLIDER
+========================= */
+
+@media (max-width: 768px) {
+
+    .projects {
+        padding: 80px 25px;
+        min-height: auto;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    .projects > h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-slider {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 42px;
+        box-sizing: border-box;
+    }
+
+    .project-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .project-track {
+        gap: 0;
+    }
+
+    .project-track .project-card {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: none;
+        min-width: 100%;
+    }
+
+    .project-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .project-prev {
+        left: 0;
+    }
+
+    .project-next {
+        right: 0;
+    }
+
+    .project-track .project-card img {
+        height: 200px;
+    }
+
+    .garden-valley-logo {
+        height: 200px;
+    }
+}
+
+
+rds */
+
+.project-card {
+    flex: 0 0 350px;
+    width: 350px;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    opacity: 1;
+    transform: none;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #E0AD2E;
+    box-shadow: 0 0 20px rgba(224, 173, 46, 0.2);
+}
+
+/* Project Images */
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #000;
+    display: block;
+}
+
+/* Project Content */
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content h3 {
+    color: #E0AD2E;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.project-content .tech {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* Button */
+
+.project-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #E0AD2E;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.project-btn:hover {
+    background-color: white;
+    box-shadow: 0 0 15px #E0AD2E;
+}
+
+/* =========================
+   PROJECT ARROWS
+========================= */
+
+.project-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid #E0AD2E;
+    border-radius: 50%;
+
+    background-color: #111;
+    color: #E0AD2E;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition: 0.3s ease;
+}
+
+.project-arrow:hover {
+    background-color: #E0AD2E;
+    color: black;
+    box-shadow: 0 0 15px #E0AD2E;
+}
+
+.project-prev {
+    left: 0;
+}
+
+.project-next {
+    right: 0;
+}
+
+/* =========================
+   PROJECT DOTS
+========================= */
+
+.project-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.project-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.project-dot.active {
+    background-color: #E0AD2E;
+    box-shadow: 0 0 8px #E0AD2E;
+}
+
+/* =========================
+   GARDEN VALLEY LOGO
+========================= */
+
+.garden-valley-logo {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #000;
+    border-bottom: 1px solid #333;
+
+    font-size: 55px;
+    font-weight: bold;
+    color: #E0AD2E;
+}
+
+
+/* =========================
+   MOBILE PROJECT SLIDER
+========================= */
+
+@media (max-width: 768px) {
+
+    .project-slider {
+        padding: 0 40px;
+        max-width: 100%;
+    }
+
+    .project-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .project-track {
+        gap: 0;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .project-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .project-prev {
+        left: 0;
+    }
+
+    .project-next {
+        right: 0;
+    }
+
+    .project-card img {
+        height: 200px;
+    }
+
+    .garden-valley-logo {
+        height: 200px;
+    }
+}
+/* =========================
+   PROJECT SLIDER - DESKTOP
+========================= */
+
+.project-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    /* arrows ke liye space */
+    padding: 0 60px;
+}
+
+.project-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.project-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    transition: transform 0.6s ease;
+}
+
+/* 3 cards proper fit */
+
+.project-track .project-card {
+    flex: 0 0 350px;
+    width: 350px;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   ARROWS - OUTSIDE CARDS
+========================= */
+
+.project-arrow {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid #E0AD2E;
+    border-radius: 50%;
+
+    background-color: #111;
+    color: #E0AD2E;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    z-index: 100;
+}
+
+.project-prev {
+    left: -5px;
+}
+
+.project-next {
+    right: -5px;
+}
+
+.project-arrow:hover {
+    background-color: #E0AD2E;
+    color: black;
+    box-shadow: 0 0 15px #E0AD2E;
+}
+
+
+@media (max-width: 768px) {
+
+    .project-slider {
+        width: 100%;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    .project-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .project-track {
+        gap: 0;
+    }
+
+    .project-track .project-card {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .project-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .project-prev {
+        left: -5px;
+    }
+
+    .project-next {
+        right: -5px;
+    }
 }
